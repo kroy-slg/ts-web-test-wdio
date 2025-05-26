@@ -7,7 +7,7 @@
     "wdio": "wdio run ./wdio.conf.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "k.roy",
   "license": "ISC",
   "description": "",
   "devDependencies": {
