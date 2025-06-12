@@ -8,7 +8,7 @@ export const config: WebdriverIO.Config = {
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
     tsConfigPath: './tsconfig.json',
-    
+
     //
     // ==================
     // Specify Test Files
@@ -25,7 +25,7 @@ export const config: WebdriverIO.Config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        '.././src/test/features/login.feature'
+        '../src/test/features/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -88,7 +88,7 @@ export const config: WebdriverIO.Config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost:3000',
+    // baseUrl: 'http://localhost:3000',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -113,7 +113,7 @@ export const config: WebdriverIO.Config = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'cucumber',
-    
+
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
@@ -137,8 +137,7 @@ export const config: WebdriverIO.Config = {
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
         require: [
-            // './features/step-definitions/steps.ts'
-            '../src/test/step_definitions/*.ts'
+            'src/test/step_definitions/steps.ts'
         ],
         // <boolean> show full backtrace for errors
         backtrace: false,
@@ -285,7 +284,7 @@ export const config: WebdriverIO.Config = {
      */
     // afterFeature: function (uri, feature) {
     // },
-    
+
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {string} commandName hook command name
