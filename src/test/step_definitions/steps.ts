@@ -1,22 +1,21 @@
-import { Given, When, Then } from '@wdio/cucumber-framework';
+import { When, Then } from '@wdio/cucumber-framework';
 import { expect } from '@wdio/globals'
-import LoginPage from "../pages/login.page";
-import SecurePage from "../pages/secure.page";
+import { homePage } from "../pages/homePage";
+import { platformPage } from "../pages/platformPage";
+import uimap from "../properties/uimap";
 
-const pages = {
-    login: LoginPage
-}
-
-Given(/^I am on the (\w+) page$/, async (page) => {
-    await pages[page].open()
+When(/^User lands on home page$/, async function () {
+    await homePage.open('');
 });
 
-When(/^I login with (\w+) and (.+)$/, async (username, password) => {
-    await LoginPage.login(username, password)
+When(/^User lands on the platform page$/, async function () {
+    await homePage.open(uimap.aboutThePlatformEndPoint);
 });
 
-Then(/^I should see a flash message saying (.*)$/, async (message) => {
-    await expect(SecurePage.flashAlert).toBeExisting();
-    await expect(SecurePage.flashAlert).toHaveText(expect.stringContaining(message));
+Then(/^User verifies home page$/, async function () {
+    await expect(homePage.homePage).toBeDisplayed();
 });
 
+Then(/^User verifies the platform page$/, async function () {
+    await expect(platformPage.platformPage).toBeDisplayed();
+});
